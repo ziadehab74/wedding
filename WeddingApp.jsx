@@ -44,8 +44,8 @@ const globalCSS = `
   .party-card  { transition: transform 0.3s; }
   .party-card:hover  { transform: translateY(-4px); }
 
-  .nav-link { text-decoration:none; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; transition:color 0.3s; color:${colors.earth}; }
-  .nav-link:hover { color:${colors.rose}; }
+  .nav-link { text-decoration:none; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; transition:color 0.3s; color:#fff; }
+  .nav-link:hover { color:${colors.gold}; }
 
   .map-dir-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.85rem 2rem; border:1px solid rgba(201,169,110,0.38); color:${colors.gold}; font-size:0.64rem; letter-spacing:0.25em; text-transform:uppercase; text-decoration:none; font-family:'Jost',sans-serif; transition:all 0.3s; }
   .map-dir-btn:hover { background:${colors.gold}; color:${colors.deep}; }
@@ -150,7 +150,7 @@ function Nav() {
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
       display: "flex", justifyContent: "center", gap: "2.5rem",
       padding: "1.1rem 2rem",
-      background: "rgba(250,246,240,0.9)", backdropFilter: "blur(12px)",
+      background: "rgba(61, 43, 31, 0.6)", backdropFilter: "blur(12px)",
       borderBottom: "1px solid rgba(201,169,110,0.18)",
       fontFamily: "'Jost', sans-serif",
     }}>
