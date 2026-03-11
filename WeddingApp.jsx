@@ -230,9 +230,9 @@ function Hero() {
         ) : (
           [["d","Days"],["h","Hours"],["m","Minutes"],["s","Seconds"]].map(([k,label], i) => (
             <div key={k} style={{ textAlign:"center" }}>
-              {i > 0 && <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.6rem", color:colors.gold, opacity:0.5, position:"absolute", marginLeft:"-1.2rem", marginTop:"0.2rem" }}>·</span>}
-              <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"2.2rem", fontWeight:300, lineHeight:1, color:"#fff" }}>{cd[k]}</div>
-              <div style={{ fontSize:"0.55rem", letterSpacing:"0.2em", textTransform:"uppercase", color:"rgba(255,255,255,0.8)", marginTop:"0.3rem" }}>{label}</div>
+                {i > 0 && <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"2rem", color:colors.gold, opacity:0.5, position:"absolute", marginLeft:"-1.5rem", marginTop:"0.2rem" }}>·</span>}
+                <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"2.8rem", fontWeight:300, lineHeight:1, color:"#fff" }}>{cd[k]}</div>
+                <div style={{ fontSize:"0.7rem", letterSpacing:"0.2em", textTransform:"uppercase", color:"rgba(255,255,255,0.8)", marginTop:"0.3rem" }}>{label}</div>
             </div>
           ))
         )}
@@ -245,9 +245,9 @@ function Hero() {
 function SectionHeader({ tag, title, titleEm }) {
   return (
     <>
-      <span className="reveal" style={{ fontSize:"0.62rem", letterSpacing:"0.32em", textTransform:"uppercase", color:colors.gold, display:"block", textAlign:"center", marginBottom:"1rem", fontFamily:"'Jost',sans-serif" }}>{tag}</span>
-      <h2 className="reveal" style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(2rem,5vw,3rem)", fontWeight:300, textAlign:"center", color:colors.deep }}>
-        {title} <em style={{ color:colors.rose, fontStyle:"italic" }}>{titleEm}</em>
+      <span className="reveal" style={{ fontSize:"0.75rem", letterSpacing:"0.32em", textTransform:"uppercase", color:colors.gold, display:"block", textAlign:"center", marginBottom:"1rem", fontFamily:"'Jost',sans-serif", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>{tag}</span>
+      <h2 className="reveal" style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(2.5rem,6vw,4rem)", fontWeight:300, textAlign:"center", color:"#fff", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>
+        {title} <em style={{ color:colors.gold, fontStyle:"italic" }}>{titleEm}</em>
       </h2>
       <div className="reveal" style={{ width:"70px", height:"1px", margin:"1.5rem auto 3rem", background:`linear-gradient(to right,transparent,${colors.gold},transparent)` }}/>
     </>
@@ -263,15 +263,25 @@ function Details() {
     { icon:"👗", title:"Dress Code", body:"Formal Attire\nSoft & Earthy Tones\nWelcome" },
   ];
   return (
-    <section id="details" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.warm, padding:"6rem 2rem" }}>
-      <div style={{ maxWidth:"900px", margin:"0 auto" }}>
+    <section id="details" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:"transparent", padding:"6rem 2rem", position:"relative" }}>
+      {/* Dark Overlay */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: "rgba(61, 43, 31, 0.5)",
+        zIndex: 0,
+      }} />
+      <div style={{ maxWidth:"900px", margin:"0 auto", position:"relative", zIndex:1 }}>
         <SectionHeader tag="The Details" title="When &" titleEm="Where"/>
         <div className="reveal" style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:"1.5rem" }}>
           {cards.map(({ icon,title,body }) => (
-            <div key={title} className="detail-card" style={{ background:colors.cream, padding:"2.5rem 1.8rem", textAlign:"center", border:"1px solid rgba(201,169,110,0.18)", borderRadius:"1px", fontFamily:"'Jost',sans-serif" }}>
-              <div style={{ fontSize:"1.8rem", marginBottom:"1rem" }}>{icon}</div>
-              <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.15rem", color:colors.earth, marginBottom:"0.7rem", fontWeight:400 }}>{title}</h3>
-              <p style={{ fontSize:"0.83rem", color:colors.deep, lineHeight:1.8, opacity:0.8, whiteSpace:"pre-line" }}>{body}</p>
+            <div key={title} className="detail-card" style={{ background:"rgba(250,246,240,0.25)", padding:"2.5rem 1.8rem", textAlign:"center", border:"1px solid rgba(201,169,110,0.3)", borderRadius:"1px", fontFamily:"'Jost',sans-serif" }}>
+              <div style={{ fontSize:"2rem", marginBottom:"1rem" }}>{icon}</div>
+              <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.4rem", color:"#fff", marginBottom:"0.7rem", fontWeight:400 }}>{title}</h3>
+              <p style={{ fontSize:"0.95rem", color:"rgba(255,255,255,0.9)", lineHeight:1.8, opacity:0.9, whiteSpace:"pre-line" }}>{body}</p>
             </div>
           ))}
         </div>
@@ -317,8 +327,18 @@ function WeddingParty() {
 /* ── LOCATION ── */
 function Location() {
   return (
-    <section id="location" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.deep, padding:"6rem 2rem" }}>
-      <div style={{ maxWidth:"900px", margin:"0 auto" }}>
+    <section id="location" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:"transparent", padding:"6rem 2rem", position:"relative" }}>
+      {/* Dark Overlay */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: "rgba(61, 43, 31, 0.5)",
+        zIndex: 0,
+      }} />
+      <div style={{ maxWidth:"900px", margin:"0 auto", position:"relative", zIndex:1 }}>
         <span className="reveal" style={{ fontSize:"0.62rem", letterSpacing:"0.32em", textTransform:"uppercase", color:colors.gold, display:"block", textAlign:"center", marginBottom:"1rem", fontFamily:"'Jost',sans-serif" }}>
           Find Us
         </span>
@@ -397,8 +417,18 @@ function RSVP() {
   };
 
   return (
-    <section id="rsvp" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.warm, padding:"6rem 2rem" }}>
-      <div style={{ maxWidth:"700px", margin:"0 auto" }}>
+    <section id="rsvp" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:"transparent", padding:"6rem 2rem", position:"relative" }}>
+      {/* Dark Overlay */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: "rgba(61, 43, 31, 0.5)",
+        zIndex: 0,
+      }} />
+      <div style={{ maxWidth:"700px", margin:"0 auto", position:"relative", zIndex:1 }}>
         <SectionHeader tag="Confirm Your Presence" title="RSVP &" titleEm="Join Us"/>
         
         {submitted && (
@@ -418,7 +448,7 @@ function RSVP() {
 
         <form ref={formRef} onSubmit={handleSubmit} className="reveal" style={{ fontFamily:"'Jost',sans-serif" }}>
           <div style={{ marginBottom:"1.8rem" }}>
-            <label style={{ display:"block", fontSize:"0.85rem", letterSpacing:"0.1em", textTransform:"uppercase", color:colors.earth, marginBottom:"0.5rem" }}>
+            <label style={{ display:"block", fontSize:"1rem", letterSpacing:"0.1em", textTransform:"uppercase", color:"#fff", marginBottom:"0.5rem" }}>
               Your Name *
             </label>
             <input 
@@ -428,10 +458,10 @@ function RSVP() {
               placeholder="Full Name"
               style={{
                 width:"100%",
-                padding:"0.85rem 1rem",
+                padding:"1rem 1.2rem",
                 border:`1px solid rgba(201,169,110,0.3)`,
                 borderRadius:"2px",
-                fontSize:"0.95rem",
+                fontSize:"1.1rem",
                 fontFamily:"'Jost',sans-serif",
                 backgroundColor:"rgba(250,246,240,0.5)",
                 color:colors.deep,
@@ -440,7 +470,7 @@ function RSVP() {
           </div>
 
           <div style={{ marginBottom:"1.8rem" }}>
-            <label style={{ display:"block", fontSize:"0.85rem", letterSpacing:"0.1em", textTransform:"uppercase", color:colors.earth, marginBottom:"0.5rem" }}>
+            <label style={{ display:"block", fontSize:"1rem", letterSpacing:"0.1em", textTransform:"uppercase", color:"#fff", marginBottom:"0.5rem" }}>
               Number of Attendees *
             </label>
             <select 
@@ -448,10 +478,10 @@ function RSVP() {
               required
               style={{
                 width:"100%",
-                padding:"0.85rem 1rem",
+                padding:"1rem 1.2rem",
                 border:`1px solid rgba(201,169,110,0.3)`,
                 borderRadius:"2px",
-                fontSize:"0.95rem",
+                fontSize:"1.1rem",
                 fontFamily:"'Jost',sans-serif",
                 backgroundColor:"rgba(250,246,240,0.5)",
                 color:colors.deep,
@@ -467,7 +497,7 @@ function RSVP() {
           </div>
 
           <div style={{ marginBottom:"2rem" }}>
-            <label style={{ display:"block", fontSize:"0.85rem", letterSpacing:"0.1em", textTransform:"uppercase", color:colors.earth, marginBottom:"0.5rem" }}>
+            <label style={{ display:"block", fontSize:"1rem", letterSpacing:"0.1em", textTransform:"uppercase", color:"#fff", marginBottom:"0.5rem" }}>
               Message
             </label>
             <textarea 
@@ -476,10 +506,10 @@ function RSVP() {
               rows="4"
               style={{
                 width:"100%",
-                padding:"0.85rem 1rem",
+                padding:"1rem 1.2rem",
                 border:`1px solid rgba(201,169,110,0.3)`,
                 borderRadius:"2px",
-                fontSize:"0.95rem",
+                fontSize:"1rem",
                 fontFamily:"'Jost',sans-serif",
                 backgroundColor:"rgba(250,246,240,0.5)",
                 color:colors.deep,
@@ -493,12 +523,12 @@ function RSVP() {
             disabled={loading}
             style={{
               width:"100%",
-              padding:"1rem",
+              padding:"1.2rem",
               background:loading ? colors.sage : colors.rose,
               color:"white",
               border:"none",
               borderRadius:"2px",
-              fontSize:"0.85rem",
+              fontSize:"1rem",
               letterSpacing:"0.15em",
               textTransform:"uppercase",
               fontFamily:"'Jost',sans-serif",
@@ -516,23 +546,23 @@ function RSVP() {
         {/* Guests Board */}
         {guests.length > 0 && (
           <div style={{ marginTop: "3rem", paddingTop: "3rem", borderTop: `1px solid rgba(201,169,110,0.2)` }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", color: colors.deep, textAlign: "center", marginBottom: "1.5rem" }}>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.2rem", color: "#fff", textAlign: "center", marginBottom: "1.5rem" }}>
               Our Guests
             </h3>
 
             {/* Total Attendees Counter */}
             <div style={{ 
-              background: colors.cream, 
-              padding: "1.5rem", 
+              background: "rgba(250,246,240,0.1)", 
+              padding: "2rem", 
               borderRadius: "2px", 
               textAlign: "center", 
               marginBottom: "2rem",
               border: `1px solid rgba(201,169,110,0.2)`
             }}>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.5rem", color: colors.rose, fontWeight: 300 }}>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3.5rem", color: colors.gold, fontWeight: 300 }}>
                 {guests.reduce((sum, g) => sum + g.attendees, 0)}
               </div>
-              <div style={{ fontSize: "0.85rem", letterSpacing: "0.1em", textTransform: "uppercase", color: colors.earth }}>
+              <div style={{ fontSize: "1rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#fff" }}>
                 Total Attendees
               </div>
             </div>
@@ -574,10 +604,21 @@ function RSVP() {
 /* ── FOOTER ── */
 function Footer() {
   return (
-    <footer style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:"#130a07", color:"rgba(250,246,240,0.27)", textAlign:"center", padding:"3rem 2rem", fontSize:"0.67rem", letterSpacing:"0.15em", borderTop:"1px solid rgba(201,169,110,0.08)", fontFamily:"'Jost',sans-serif" }}>
-      <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.6rem", fontStyle:"italic", color:"rgba(201,169,110,0.48)", marginBottom:"0.6rem" }}>Ziad &amp; Diana</div>
+    <footer style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:"transparent", color:"rgba(250,246,240,0.9)", textAlign:"center", padding:"3rem 2rem", fontSize:"0.67rem", letterSpacing:"0.15em", borderTop:"1px solid rgba(201,169,110,0.08)", fontFamily:"'Jost',sans-serif", position:"relative" }}>
+      {/* Dark Overlay */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: "rgba(61, 43, 31, 0.5)",
+        zIndex: 0,
+      }} />
+      <div style={{ position:"relative", zIndex:1 }}>
       <p>June 12, 2026 &nbsp;·&nbsp; Lumira Hall &nbsp;·&nbsp; Al-Thawra Street</p>
       <p style={{ marginTop:"1rem" }}>Made with <span style={{ color:colors.gold }}>♥</span></p>
+      </div>
     </footer>
   );
 }
@@ -589,7 +630,6 @@ export default function App() {
   return (
     <div style={{
       fontFamily:"'Jost', sans-serif",
-      background:colors.cream,
       backgroundImage: "url('/asd.jpeg')",
       backgroundSize: "cover",
       backgroundPosition: "center",
@@ -597,18 +637,6 @@ export default function App() {
       backgroundAttachment: "fixed",
       position: "relative",
     }}>
-      {/* Dark overlay for entire page */}
-      <div style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: "rgba(61, 43, 31, 0.4)",
-        zIndex: -1,
-        pointerEvents: "none",
-      }} />
-      
       <Nav />
       <Hero />
       <Details />
