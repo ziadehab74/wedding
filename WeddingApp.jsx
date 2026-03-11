@@ -339,6 +339,10 @@ function RSVP() {
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [guests, setGuests] = useState(() => {
+    const saved = localStorage.getItem("weddingGuests");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -346,17 +350,25 @@ function RSVP() {
 
     try {
       const formData = new FormData(formRef.current);
+      const guestData = {
+        id: Date.now(),
+        name: formData.get("name"),
+        attendees: parseInt(formData.get("attendees")),
+        message: formData.get("message"),
+        timestamp: new Date().toLocaleDateString(),
+      };
+
       const response = await emailjs.send("service_wdjka3c", "template_8k50qpf", {
         to_email: "zehab028@gmail.com",
-        guest_name: formData.get("name"),
-        guest_email: formData.get("email"),
-        phone: formData.get("phone"),
-        attendance: formData.get("attendance"),
-        attendees: formData.get("attendees"),
-        message: formData.get("message"),
+        guest_name: guestData.name,
+        attendees: guestData.attendees,
+        message: guestData.message,
       });
 
       if (response.status === 200) {
+        const updatedGuests = [...guests, guestData];
+        setGuests(updatedGuests);
+        localStorage.setItem("weddingGuests", JSON.stringify(updatedGuests));
         setSubmitted(true);
         formRef.current.reset();
         setTimeout(() => setSubmitted(false), 5000);
@@ -410,74 +422,6 @@ function RSVP() {
                 color:colors.deep,
               }}
             />
-          </div>
-
-          <div style={{ marginBottom:"1.8rem" }}>
-            <label style={{ display:"block", fontSize:"0.85rem", letterSpacing:"0.1em", textTransform:"uppercase", color:colors.earth, marginBottom:"0.5rem" }}>
-              Email Address *
-            </label>
-            <input 
-              type="email" 
-              name="email" 
-              required 
-              placeholder="your@email.com"
-              style={{
-                width:"100%",
-                padding:"0.85rem 1rem",
-                border:`1px solid rgba(201,169,110,0.3)`,
-                borderRadius:"2px",
-                fontSize:"0.95rem",
-                fontFamily:"'Jost',sans-serif",
-                backgroundColor:"rgba(250,246,240,0.5)",
-                color:colors.deep,
-              }}
-            />
-          </div>
-
-          <div style={{ marginBottom:"1.8rem" }}>
-            <label style={{ display:"block", fontSize:"0.85rem", letterSpacing:"0.1em", textTransform:"uppercase", color:colors.earth, marginBottom:"0.5rem" }}>
-              Phone Number
-            </label>
-            <input 
-              type="tel" 
-              name="phone" 
-              placeholder="+20 XXX XXX XXXX"
-              style={{
-                width:"100%",
-                padding:"0.85rem 1rem",
-                border:`1px solid rgba(201,169,110,0.3)`,
-                borderRadius:"2px",
-                fontSize:"0.95rem",
-                fontFamily:"'Jost',sans-serif",
-                backgroundColor:"rgba(250,246,240,0.5)",
-                color:colors.deep,
-              }}
-            />
-          </div>
-
-          <div style={{ marginBottom:"1.8rem" }}>
-            <label style={{ display:"block", fontSize:"0.85rem", letterSpacing:"0.1em", textTransform:"uppercase", color:colors.earth, marginBottom:"0.5rem" }}>
-              Will You Attend? *
-            </label>
-            <select 
-              name="attendance" 
-              required
-              style={{
-                width:"100%",
-                padding:"0.85rem 1rem",
-                border:`1px solid rgba(201,169,110,0.3)`,
-                borderRadius:"2px",
-                fontSize:"0.95rem",
-                fontFamily:"'Jost',sans-serif",
-                backgroundColor:"rgba(250,246,240,0.5)",
-                color:colors.deep,
-              }}
-            >
-              <option value="">Select...</option>
-              <option value="Yes, I will attend">Yes, I will attend</option>
-              <option value="I cannot attend">I cannot attend</option>
-              <option value="Unsure">Unsure</option>
-            </select>
           </div>
 
           <div style={{ marginBottom:"1.8rem" }}>
@@ -553,6 +497,60 @@ function RSVP() {
             {loading ? "Sending..." : "Confirm Invitation"}
           </button>
         </form>
+
+        {/* Guests Board */}
+        {guests.length > 0 && (
+          <div style={{ marginTop: "3rem", paddingTop: "3rem", borderTop: `1px solid rgba(201,169,110,0.2)` }}>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", color: colors.deep, textAlign: "center", marginBottom: "1.5rem" }}>
+              Our Guests
+            </h3>
+
+            {/* Total Attendees Counter */}
+            <div style={{ 
+              background: colors.cream, 
+              padding: "1.5rem", 
+              borderRadius: "2px", 
+              textAlign: "center", 
+              marginBottom: "2rem",
+              border: `1px solid rgba(201,169,110,0.2)`
+            }}>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.5rem", color: colors.rose, fontWeight: 300 }}>
+                {guests.reduce((sum, g) => sum + g.attendees, 0)}
+              </div>
+              <div style={{ fontSize: "0.85rem", letterSpacing: "0.1em", textTransform: "uppercase", color: colors.earth }}>
+                Total Attendees
+              </div>
+            </div>
+
+            {/* Guest List */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "1.2rem" }}>
+              {guests.map((guest) => (
+                <div key={guest.id} className="reveal" style={{
+                  background: colors.warm,
+                  padding: "1.5rem",
+                  borderRadius: "2px",
+                  border: `1px solid rgba(201,169,110,0.15)`,
+                  fontFamily: "'Jost', sans-serif"
+                }}>
+                  <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: colors.deep, marginBottom: "0.5rem" }}>
+                    {guest.name}
+                  </h4>
+                  <p style={{ fontSize: "0.9rem", color: colors.rose, marginBottom: "0.8rem", fontWeight: 500 }}>
+                    👥 {guest.attendees} {guest.attendees === 1 ? "Person" : "People"}
+                  </p>
+                  {guest.message && (
+                    <p style={{ fontSize: "0.85rem", color: colors.earth, fontStyle: "italic", lineHeight: 1.5 }}>
+                      "{guest.message}"
+                    </p>
+                  )}
+                  <p style={{ fontSize: "0.7rem", color: "rgba(122,92,72,0.5)", marginTop: "0.8rem" }}>
+                    {guest.timestamp}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
