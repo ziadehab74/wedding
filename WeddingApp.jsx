@@ -263,9 +263,8 @@ function Details() {
     { icon:"👗", title:"Dress Code", body:"Formal Attire\nSoft & Earthy Tones\nWelcome" },
   ];
   return (
-    <section id="details" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", backgroundImage: "url('/asd.jpeg')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", padding:"6rem 2rem", position: "relative" }}>
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(61, 43, 31, 0.7)", zIndex: 0 }} />
-      <div style={{ maxWidth:"900px", margin:"0 auto", position: "relative", zIndex: 1 }}>
+    <section id="details" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.warm, padding:"6rem 2rem" }}>
+      <div style={{ maxWidth:"900px", margin:"0 auto" }}>
         <SectionHeader tag="The Details" title="When &" titleEm="Where"/>
         <div className="reveal" style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:"1.5rem" }}>
           {cards.map(({ icon,title,body }) => (
@@ -318,9 +317,8 @@ function WeddingParty() {
 /* ── LOCATION ── */
 function Location() {
   return (
-    <section id="location" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", backgroundImage: "url('/asd.jpeg')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", padding:"6rem 2rem", position: "relative" }}>
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(61, 43, 31, 0.8)", zIndex: 0 }} />
-      <div style={{ maxWidth:"900px", margin:"0 auto", position: "relative", zIndex: 1 }}>
+    <section id="location" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.deep, padding:"6rem 2rem" }}>
+      <div style={{ maxWidth:"900px", margin:"0 auto" }}>
         <span className="reveal" style={{ fontSize:"0.62rem", letterSpacing:"0.32em", textTransform:"uppercase", color:colors.gold, display:"block", textAlign:"center", marginBottom:"1rem", fontFamily:"'Jost',sans-serif" }}>
           Find Us
         </span>
@@ -399,9 +397,8 @@ function RSVP() {
   };
 
   return (
-    <section id="rsvp" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", backgroundImage: "url('/asd.jpeg')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", padding:"6rem 2rem", position: "relative" }}>
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(61, 43, 31, 0.7)", zIndex: 0 }} />
-      <div style={{ maxWidth:"700px", margin:"0 auto", position: "relative", zIndex: 1 }}>
+    <section id="rsvp" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.warm, padding:"6rem 2rem" }}>
+      <div style={{ maxWidth:"700px", margin:"0 auto" }}>
         <SectionHeader tag="Confirm Your Presence" title="RSVP &" titleEm="Join Us"/>
         
         {submitted && (
@@ -577,13 +574,10 @@ function RSVP() {
 /* ── FOOTER ── */
 function Footer() {
   return (
-    <footer style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", backgroundImage: "url('/asd.jpeg')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", color:"rgba(250,246,240,0.7)", textAlign:"center", padding:"3rem 2rem", fontSize:"0.67rem", letterSpacing:"0.15em", borderTop:"1px solid rgba(201,169,110,0.08)", fontFamily:"'Jost',sans-serif", position: "relative" }}>
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(61, 43, 31, 0.85)", zIndex: 0 }} />
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.6rem", fontStyle:"italic", color:"rgba(201,169,110,0.6)", marginBottom:"0.6rem" }}>Ziad &amp; Diana</div>
-        <p>June 12, 2026 &nbsp;·&nbsp; Lumira Hall &nbsp;·&nbsp; Al-Thawra Street</p>
-        <p style={{ marginTop:"1rem" }}>Made with <span style={{ color:colors.gold }}>♥</span></p>
-      </div>
+    <footer style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:"#130a07", color:"rgba(250,246,240,0.27)", textAlign:"center", padding:"3rem 2rem", fontSize:"0.67rem", letterSpacing:"0.15em", borderTop:"1px solid rgba(201,169,110,0.08)", fontFamily:"'Jost',sans-serif" }}>
+      <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.6rem", fontStyle:"italic", color:"rgba(201,169,110,0.48)", marginBottom:"0.6rem" }}>Ziad &amp; Diana</div>
+      <p>June 12, 2026 &nbsp;·&nbsp; Lumira Hall &nbsp;·&nbsp; Al-Thawra Street</p>
+      <p style={{ marginTop:"1rem" }}>Made with <span style={{ color:colors.gold }}>♥</span></p>
     </footer>
   );
 }
