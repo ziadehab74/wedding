@@ -176,11 +176,7 @@ function Hero() {
       textAlign: "center", padding: "6rem 2rem 4rem",
       position: "relative", overflow: "hidden",
       width: "100vw", marginLeft: "calc(-50vw + 50%)",
-      background: colors.cream, fontFamily: "'Jost', sans-serif",
-      backgroundImage: "url('/asd.jpeg')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundAttachment: window.innerWidth <= 768 ? "scroll" : "fixed",
+      background: "transparent", fontFamily: "'Jost', sans-serif",
     }}>
       {/* Dark Overlay */}
       <div style={{
@@ -634,8 +630,7 @@ export default function App() {
       backgroundImage: "url('/asd.jpeg')",
       backgroundSize: "cover",
       backgroundPosition: "center",
-      backgroundRepeat: "repeat",
-      backgroundAttachment: window.innerWidth <= 768 ? "scroll" : "fixed",
+      backgroundAttachment: "fixed",
       position: "relative",
     }}>
       <Nav />
