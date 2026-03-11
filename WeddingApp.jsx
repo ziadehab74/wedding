@@ -55,6 +55,7 @@ const globalCSS = `
     .hcd-item { padding: 0.9rem 1rem !important; }
     .hcd-num  { font-size: 1.8rem !important; }
     .bot-left, .bot-right { width: min(280px, 68vw) !important; }
+    body { background-attachment: scroll !important; }
   }
 `;
 const styleEl = document.createElement("style");
@@ -179,7 +180,7 @@ function Hero() {
       backgroundImage: "url('/asd.jpeg')",
       backgroundSize: "cover",
       backgroundPosition: "center",
-      backgroundAttachment: "fixed",
+      backgroundAttachment: window.innerWidth <= 768 ? "scroll" : "fixed",
     }}>
       {/* Dark Overlay */}
       <div style={{
@@ -634,7 +635,7 @@ export default function App() {
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "repeat",
-      backgroundAttachment: "fixed",
+      backgroundAttachment: window.innerWidth <= 768 ? "scroll" : "fixed",
       position: "relative",
     }}>
       <Nav />
