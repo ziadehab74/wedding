@@ -176,19 +176,34 @@ function Hero() {
       position: "relative", overflow: "hidden",
       width: "100vw", marginLeft: "calc(-50vw + 50%)",
       background: colors.cream, fontFamily: "'Jost', sans-serif",
+      backgroundImage: "url('/asd.jpeg')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed",
     }}>
+      {/* Dark Overlay */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: "rgba(61, 43, 31, 0.5)",
+        zIndex: 0,
+      }} />
+
       {/* Floral corners */}
-      <FloralCorner style={{ position:"absolute", top:"-20px", left:"-20px", width:"min(320px,45vw)", opacity:0.22, pointerEvents:"none", zIndex:0 }}/>
-      <FloralCorner style={{ position:"absolute", bottom:"-20px", right:"-20px", width:"min(280px,40vw)", opacity:0.18, pointerEvents:"none", zIndex:0, transform:"rotate(180deg) scaleX(-1)" }}/>
-      <svg style={{ position:"absolute", top:"30%", left:"5%", opacity:0.1, width:"60px", pointerEvents:"none" }} viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="10" ry="28" fill="#c97d6a" transform="rotate(25 30 30)"/></svg>
-      <svg style={{ position:"absolute", top:"60%", right:"8%", opacity:0.1, width:"50px", pointerEvents:"none" }} viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="10" ry="28" fill="#8a9e7e" transform="rotate(-15 30 30)"/></svg>
+      <FloralCorner style={{ position:"absolute", top:"-20px", left:"-20px", width:"min(320px,45vw)", opacity:0.22, pointerEvents:"none", zIndex:1 }}/>
+      <FloralCorner style={{ position:"absolute", bottom:"-20px", right:"-20px", width:"min(280px,40vw)", opacity:0.18, pointerEvents:"none", zIndex:1, transform:"rotate(180deg) scaleX(-1)" }}/>
+      <svg style={{ position:"absolute", top:"30%", left:"5%", opacity:0.1, width:"60px", pointerEvents:"none", zIndex:1 }} viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="10" ry="28" fill="#c97d6a" transform="rotate(25 30 30)"/></svg>
+      <svg style={{ position:"absolute", top:"60%", right:"8%", opacity:0.1, width:"50px", pointerEvents:"none", zIndex:1 }} viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="10" ry="28" fill="#8a9e7e" transform="rotate(-15 30 30)"/></svg>
 
       {/* Content */}
-      <p style={{ ...anim(0), position:"relative", zIndex:1, fontSize:"0.7rem", letterSpacing:"0.3em", textTransform:"uppercase", color:colors.gold, marginBottom:"1.5rem" }}>
+      <p style={{ ...anim(0), position:"relative", zIndex:2, fontSize:"0.7rem", letterSpacing:"0.3em", textTransform:"uppercase", color:colors.gold, marginBottom:"1.5rem" }}>
         You are cordially invited to celebrate
       </p>
 
-      <h1 style={{ ...anim(0.2), position:"relative", zIndex:1, fontFamily:"'Cormorant Garamond', serif", fontSize:"clamp(3rem, 8vw, 5.5rem)", fontWeight:300, lineHeight:1, color:colors.deep }}>
+      <h1 style={{ ...anim(0.2), position:"relative", zIndex:2, fontFamily:"'Cormorant Garamond', serif", fontSize:"clamp(3rem, 8vw, 5.5rem)", fontWeight:300, lineHeight:1, color:"#fff" }}>
         Ziad
         <span style={{ display:"block", fontFamily:"'Cormorant Garamond', serif", fontSize:"clamp(1.8rem,4vw,3.2rem)", color:colors.gold, fontStyle:"italic", lineHeight:1.2 }}>
           &amp;
@@ -197,27 +212,27 @@ function Hero() {
       </h1>
 
       {/* Gold divider */}
-      <div style={{ ...anim(0.4), position:"relative", zIndex:1, width:"120px", height:"1px", background:`linear-gradient(to right, transparent, ${colors.gold}, transparent)`, margin:"2rem auto" }}/>
+      <div style={{ ...anim(0.4), position:"relative", zIndex:2, width:"120px", height:"1px", background:`linear-gradient(to right, transparent, ${colors.gold}, transparent)`, margin:"2rem auto" }}/>
 
-      <p style={{ ...anim(0.5), position:"relative", zIndex:1, fontFamily:"'Cormorant Garamond', serif", fontSize:"1rem", fontStyle:"italic", color:colors.earth, letterSpacing:"0.05em" }}>
+      <p style={{ ...anim(0.5), position:"relative", zIndex:2, fontFamily:"'Cormorant Garamond', serif", fontSize:"1rem", fontStyle:"italic", color:"rgba(255,255,255,0.9)", letterSpacing:"0.05em" }}>
         Friday, the Twelfth of June, Two Thousand &amp; Twenty-Six
       </p>
-      <p style={{ ...anim(0.6), position:"relative", zIndex:1, fontSize:"0.75rem", letterSpacing:"0.2em", textTransform:"uppercase", color:colors.sage, marginTop:"0.5rem" }}>
+      <p style={{ ...anim(0.6), position:"relative", zIndex:2, fontSize:"0.75rem", letterSpacing:"0.2em", textTransform:"uppercase", color:"rgba(255,255,255,0.7)", marginTop:"0.5rem" }}>
         Lumira Hall · Dar Al-Ishara · Al-Thawra Street
       </p>
 
       {/* Countdown */}
-      <div style={{ ...anim(0.7), position:"relative", zIndex:1, display:"flex", gap:"1.5rem", marginTop:"2.5rem" }}>
+      <div style={{ ...anim(0.7), position:"relative", zIndex:2, display:"flex", gap:"1.5rem", marginTop:"2.5rem" }}>
         {cd.done ? (
-          <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.5rem", fontStyle:"italic", color:colors.rose }}>
+          <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.5rem", fontStyle:"italic", color:colors.gold }}>
             Today is the day! 🌸
           </p>
         ) : (
           [["d","Days"],["h","Hours"],["m","Minutes"],["s","Seconds"]].map(([k,label], i) => (
             <div key={k} style={{ textAlign:"center" }}>
               {i > 0 && <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.6rem", color:colors.gold, opacity:0.5, position:"absolute", marginLeft:"-1.2rem", marginTop:"0.2rem" }}>·</span>}
-              <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"2.2rem", fontWeight:300, lineHeight:1, color:colors.rose }}>{cd[k]}</div>
-              <div style={{ fontSize:"0.55rem", letterSpacing:"0.2em", textTransform:"uppercase", color:colors.earth, marginTop:"0.3rem" }}>{label}</div>
+              <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"2.2rem", fontWeight:300, lineHeight:1, color:"#fff" }}>{cd[k]}</div>
+              <div style={{ fontSize:"0.55rem", letterSpacing:"0.2em", textTransform:"uppercase", color:"rgba(255,255,255,0.8)", marginTop:"0.3rem" }}>{label}</div>
             </div>
           ))
         )}
@@ -248,8 +263,9 @@ function Details() {
     { icon:"👗", title:"Dress Code", body:"Formal Attire\nSoft & Earthy Tones\nWelcome" },
   ];
   return (
-    <section id="details" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.warm, padding:"6rem 2rem" }}>
-      <div style={{ maxWidth:"900px", margin:"0 auto" }}>
+    <section id="details" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", backgroundImage: "url('/asd.jpeg')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", padding:"6rem 2rem", position: "relative" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(61, 43, 31, 0.7)", zIndex: 0 }} />
+      <div style={{ maxWidth:"900px", margin:"0 auto", position: "relative", zIndex: 1 }}>
         <SectionHeader tag="The Details" title="When &" titleEm="Where"/>
         <div className="reveal" style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:"1.5rem" }}>
           {cards.map(({ icon,title,body }) => (
@@ -302,8 +318,9 @@ function WeddingParty() {
 /* ── LOCATION ── */
 function Location() {
   return (
-    <section id="location" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.deep, padding:"6rem 2rem" }}>
-      <div style={{ maxWidth:"900px", margin:"0 auto" }}>
+    <section id="location" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", backgroundImage: "url('/asd.jpeg')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", padding:"6rem 2rem", position: "relative" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(61, 43, 31, 0.8)", zIndex: 0 }} />
+      <div style={{ maxWidth:"900px", margin:"0 auto", position: "relative", zIndex: 1 }}>
         <span className="reveal" style={{ fontSize:"0.62rem", letterSpacing:"0.32em", textTransform:"uppercase", color:colors.gold, display:"block", textAlign:"center", marginBottom:"1rem", fontFamily:"'Jost',sans-serif" }}>
           Find Us
         </span>
@@ -382,8 +399,9 @@ function RSVP() {
   };
 
   return (
-    <section id="rsvp" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:colors.warm, padding:"6rem 2rem" }}>
-      <div style={{ maxWidth:"700px", margin:"0 auto" }}>
+    <section id="rsvp" style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", backgroundImage: "url('/asd.jpeg')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", padding:"6rem 2rem", position: "relative" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(61, 43, 31, 0.7)", zIndex: 0 }} />
+      <div style={{ maxWidth:"700px", margin:"0 auto", position: "relative", zIndex: 1 }}>
         <SectionHeader tag="Confirm Your Presence" title="RSVP &" titleEm="Join Us"/>
         
         {submitted && (
@@ -559,10 +577,13 @@ function RSVP() {
 /* ── FOOTER ── */
 function Footer() {
   return (
-    <footer style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", background:"#130a07", color:"rgba(250,246,240,0.27)", textAlign:"center", padding:"3rem 2rem", fontSize:"0.67rem", letterSpacing:"0.15em", borderTop:"1px solid rgba(201,169,110,0.08)", fontFamily:"'Jost',sans-serif" }}>
-      <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.6rem", fontStyle:"italic", color:"rgba(201,169,110,0.48)", marginBottom:"0.6rem" }}>Ziad &amp; Diana</div>
-      <p>June 12, 2026 &nbsp;·&nbsp; Lumira Hall &nbsp;·&nbsp; Al-Thawra Street</p>
-      <p style={{ marginTop:"1rem" }}>Made with <span style={{ color:colors.gold }}>♥</span></p>
+    <footer style={{ width:"100vw", marginLeft:"calc(-50vw + 50%)", backgroundImage: "url('/asd.jpeg')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", color:"rgba(250,246,240,0.7)", textAlign:"center", padding:"3rem 2rem", fontSize:"0.67rem", letterSpacing:"0.15em", borderTop:"1px solid rgba(201,169,110,0.08)", fontFamily:"'Jost',sans-serif", position: "relative" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(61, 43, 31, 0.85)", zIndex: 0 }} />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.6rem", fontStyle:"italic", color:"rgba(201,169,110,0.6)", marginBottom:"0.6rem" }}>Ziad &amp; Diana</div>
+        <p>June 12, 2026 &nbsp;·&nbsp; Lumira Hall &nbsp;·&nbsp; Al-Thawra Street</p>
+        <p style={{ marginTop:"1rem" }}>Made with <span style={{ color:colors.gold }}>♥</span></p>
+      </div>
     </footer>
   );
 }
@@ -572,7 +593,28 @@ export default function App() {
   useReveal();
 
   return (
-    <div style={{ fontFamily:"'Jost', sans-serif", background:colors.cream }}>
+    <div style={{
+      fontFamily:"'Jost', sans-serif",
+      background:colors.cream,
+      backgroundImage: "url('/asd.jpeg')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "repeat",
+      backgroundAttachment: "fixed",
+      position: "relative",
+    }}>
+      {/* Dark overlay for entire page */}
+      <div style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: "rgba(61, 43, 31, 0.4)",
+        zIndex: -1,
+        pointerEvents: "none",
+      }} />
+      
       <Nav />
       <Hero />
       <Details />
